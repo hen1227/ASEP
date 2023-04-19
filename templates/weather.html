@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Weather</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather in {{ weather_data.name }}</h1>
+        <div class="weather-info">
+            <div class="temperature">{{ weather_data.main.temp | round(1) }}K</div>
+            <div class="description">{{ weather_data.weather[0].description }}</div>
+            <div class="details">
+                <div>Humidity: {{ weather_data.main.humidity }}%</div>
+                <div>Wind Speed: {{ weather_data.wind.speed }} m/s</div>
+                <div>Pressure: {{ weather_data.main.pressure }} hPa</div>
+            </div>
+            <img id="weather-icon" src="{{'https://openweathermap.org/img/wn/' + weather_data['weather'][0].icon + '@2x.png'}}"/>
+        </div>
+    </div>
+    <script>
+        // let weatherIcon = document.getElementById('weather-icon');
+        // weatherIcon.src = "https://openweathermap.org/img/wn/"+ weather_data.main.temp +"@2x.png"
+    </script>
+</body>
+</html>
