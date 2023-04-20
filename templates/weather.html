@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Weather in {{ weather_data.name }}</h1>
         <div class="weather-info">
-            <div class="temperature">{{ weather_data.main.temp | round(1) }}K</div>
+            <div class="temperature">{{ weather_data.main.temp | round(1) }}°F</div>
             <div class="description">{{ weather_data.weather[0].description }}</div>
             <div class="details">
                 <div>Humidity: {{ weather_data.main.humidity }}%</div>

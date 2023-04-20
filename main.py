@@ -3,8 +3,7 @@ from urllib.request import urlopen
 import json
 
 APIKey = "c09e16df2da01eaacc00a45d04eb066e"
-
-API_URL = ('http://api.openweathermap.org/data/2.5/weather?id=524901&appid=' + APIKey)
+API_URL = ('http://api.openweathermap.org/data/2.5/weather?lat=43.2081&lon=-71.5376&id=524901&appid=' + APIKey)
 
 
 app = Flask(__name__)
@@ -16,8 +15,8 @@ def index():
 def weather():
     with urlopen(API_URL) as r:
         weather_data = json.loads(r.read())
-        print(weather_data)
-        weather_data["main"]["temp"] = round(weather_data["main"]["temp"])
+        # print(weather_data)
+        weather_data["main"]["temp"] = round((weather_data["main"]["temp"] - 273.15) * 9/5 + 32, 2)
         print(weather_data)
     return render_template('weather.html', weather_data=weather_data)
 
